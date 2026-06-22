@@ -1,16 +1,16 @@
 location_name,title,description,price,bedrooms,bathrooms,lat,lng,image_url
-Dhaka,City View Apartment,Modern apartment in city center,120.00,2,2,23.8103,90.4125,https://picsum.photos/seed/dhaka1/600/400
-Dhaka,Green Park Residence,Quiet family friendly home,150.00,3,2,23.7925,90.4078,https://picsum.photos/seed/dhaka2/600/400
-Dhaka,Luxury Skyline Suite,High-rise luxury apartment,300.00,3,3,23.7808,90.4105,https://picsum.photos/seed/dhaka3/600/400
-Chittagong,Sea Breeze Apartment,Near the coast with sea view,110.00,2,2,22.3569,91.7832,https://picsum.photos/seed/ctg1/600/400
-Chittagong,Hill View Residence,Surrounded by green hills,140.00,3,2,22.3475,91.8123,https://picsum.photos/seed/ctg2/600/400
-Chittagong,Port City Flat,Close to business district,100.00,2,1,22.3305,91.8317,https://picsum.photos/seed/ctg3/600/400
-Sylhet,Nature Retreat Villa,Peaceful villa near nature,180.00,3,2,24.8949,91.8687,https://picsum.photos/seed/sylhet1/600/400
-Sylhet,Tea Garden Cottage,Stay near tea gardens,130.00,2,2,24.9015,91.8710,https://picsum.photos/seed/sylhet2/600/400
-Sylhet,River Side Lodge,Beautiful river view stay,160.00,3,3,24.8892,91.8823,https://picsum.photos/seed/sylhet3/600/400
-Khulna,River View Apartment,Calm riverside property,100.00,2,2,22.8456,89.5403,https://picsum.photos/seed/khulna1/600/400
-Khulna,City Center Flat,Central location apartment,90.00,1,1,22.8467,89.5432,https://picsum.photos/seed/khulna2/600/400
-Rajshahi,Sunset Villa,Beautiful sunset views,140.00,3,2,24.3745,88.6042,https://picsum.photos/seed/raj1/600/400
-Rajshahi,Green Field House,Near open fields and nature,120.00,2,2,24.3721,88.6098,https://picsum.photos/seed/raj2/600/400
-Barisal,River Delta Home,Near river delta area,110.00,2,1,22.7010,90.3535,https://picsum.photos/seed/bar1/600/400
-Barisal,Coastal Breeze Apartment,Fresh coastal air stay,130.00,3,2,22.7054,90.3612,https://picsum.photos/seed/bar2/600/400
+Dhaka,City View Apartment,Modern apartment in city center,120.00,2,2,23.8103,90.4125,city-view-apartment.jpg
+Dhaka,Green Park Residence,Quiet family friendly home,150.00,3,2,23.7925,90.4078,green-park-residence.jpg
+Dhaka,Luxury Skyline Suite,High-rise luxury apartment,300.00,3,3,23.7808,90.4105,luxury-skyline-suite.jpg
+Chittagong,Sea Breeze Apartment,Near the coast with sea view,110.00,2,2,22.3569,91.7832,sea-breeze-apartment.jpg
+Chittagong,Hill View Residence,Surrounded by green hills,140.00,3,2,22.3475,91.8123,hill-view-residence.jpg
+Chittagong,Port City Flat,Close to business district,100.00,2,1,22.3305,91.8317,port-city-flat.jpg
+Sylhet,Nature Retreat Villa,Peaceful villa near nature,180.00,3,2,24.8949,91.8687,nature-retreat-villa.jpg
+Sylhet,Tea Garden Cottage,Stay near tea gardens,130.00,2,2,24.9015,91.8710,tea-garden-cottage.jpg
+Sylhet,River Side Lodge,Beautiful river view stay,160.00,3,3,24.8892,91.8823,river-side-lodge.jpg
+Khulna,River View Apartment,Calm riverside property,100.00,2,2,22.8456,89.5403,river-view-apartment.jpg
+Khulna,City Center Flat,Central location apartment,90.00,1,1,22.8467,89.5432,city-center-flat.jpg
+Rajshahi,Sunset Villa,Beautiful sunset views,140.00,3,2,24.3745,88.6042,sunset-villa.jpg
+Rajshahi,Green Field House,Near open fields and nature,120.00,2,2,24.3721,88.6098,green-field-house.jpg
+Barisal,River Delta Home,Near river delta area,110.00,2,1,22.7010,90.3535,river-delta-home.jpg
+Barisal,Coastal Breeze Apartment,Fresh coastal air stay,130.00,3,2,22.7054,90.3612,coastal-breeze-apartment.jpg
