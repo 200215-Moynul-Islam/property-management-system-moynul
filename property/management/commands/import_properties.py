@@ -1,10 +1,10 @@
+import os
 import pandas as pd
-
 from django.core.management.base import BaseCommand
 from django.contrib.gis.geos import Point
-
+from django.core.files import File
+from django.conf import settings
 from property.models import Location, Property, PropertyImage
-
 
 class Command(BaseCommand):
     help = "Import properties from CSV"
@@ -19,9 +19,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         file_path = options["file"]
-
         self.stdout.write(f"Reading CSV: {file_path}")
-
         df = pd.read_csv(file_path)
 
         for _, row in df.iterrows():
@@ -49,12 +47,14 @@ class Command(BaseCommand):
             )
 
             image_url = row.get("image_url")
-
             if image_url:
-                PropertyImage.objects.create(
-                    property=property_obj,
-                    image=image_url,
-                    caption=row.get("title", "")
-                )
+                source_image_path = os.path.join(settings.BASE_DIR, "property", "data", "images", image_url)
+                if os.path.exists(source_image_path):
+                    with open(source_image_path, "rb") as local_file:
+                        img_instance = PropertyImage(
+                            property=property_obj,
+                            caption=row.get("title", "")
+                        )
+                        img_instance.image.save(image_url, File(local_file), save=True)
 
         self.stdout.write("Import successful")
