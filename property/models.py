@@ -51,7 +51,9 @@ class PropertyImage(models.Model):
         related_name="images",
     )
 
-    url = models.URLField()
+    image = models.ImageField(
+        upload_to="properties/%Y/%m/"
+    )
 
     caption = models.CharField(
         max_length=255,
@@ -59,4 +61,4 @@ class PropertyImage(models.Model):
     )
 
     def __str__(self):
-        return self.url
+        return self.image.name
