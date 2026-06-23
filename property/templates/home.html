@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container">
+  <div class="hero-section">
+    <h1 class="hero-title">Discover your next destination</h1>
+    <p class="hero-subtitle">
+      Explore locations, and find your perfect rental stay.
+    </p>
+
+    <div class="search-wrapper">
+      <form
+        action="{% url 'property_list' %}"
+        method="GET"
+        class="search-form"
+        id="searchForm"
+      >
+        <input
+          type="text"
+          name="location"
+          id="searchInput"
+          placeholder="Type a location name..."
+          autocomplete="off"
+          class="search-input"
+        />
+        <button type="submit" class="btn-search">Search</button>
+      </form>
+      <div
+        id="autocompleteResults"
+        class="autocomplete-dropdown"
+        style="display: none"
+      ></div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/autocomplete.js' %}"></script>
+{% endblock %}
