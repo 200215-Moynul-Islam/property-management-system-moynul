@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.gis.db import models as gis_models
-from pgvector.django import VectorField
+from pgvector.django import VectorField, HnswIndex  # Added HnswIndex
 
 
 class Location(models.Model):
@@ -10,10 +10,21 @@ class Location(models.Model):
         srid=4326,
     )
     embedding = VectorField(
-        dimensions=1536,
+        dimensions=384,
         null=True,
         blank=True,
     )
+
+    class Meta:
+        indexes = [
+            HnswIndex(
+                name="location_embedding_hnsw_idx",
+                fields=["embedding"],
+                m=16,
+                ef_construction=64,
+                opclasses=["vector_cosine_ops"],
+            )
+        ]
 
     def __str__(self):
         return self.name
