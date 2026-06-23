@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/property_list.css' %}">
+
+<div class="container">
+  <div class="list-header-row">
+    <h2 class="section-title">
+      Search Results for "{{ location_name }}"
+    </h2>
+    
+    <form method="GET" action="" class="page-size-form" id="pageSizeForm">
+      <input type="hidden" name="location" value="{{ location_name }}">
+      <label for="itemsPerPageSelector" class="selector-label">Items per page:</label>
+      <select name="items_per_page" id="itemsPerPageSelector" class="selector-dropdown" onchange="document.getElementById('pageSizeForm').submit();">
+        {% with ""|center:24 as range %}
+        {% for _ in range %}
+          <option value="{{ forloop.counter }}" {% if items_per_page == forloop.counter %}selected{% endif %}>
+            {{ forloop.counter }}
+          </option>
+        {% endfor %}
+        {% endwith %}
+      </select>
+    </form>
+  </div>
+
+  <div class="properties-grid">
+    {% for prop in page_obj %}
+    <a href="{% url 'property_detail' prop.id %}" class="property-card-link">
+      <div class="property-card">
+        <div class="thumbnail-wrapper">
+          <img src="{% if prop.images.all %}{{ prop.images.first.image.url }}{% else %}/static/images/fallback.jpg{% endif %}" alt="{{ prop.title }}" />
+        </div>
+        <div class="card-info">
+          <h3 class="property-title">{{ prop.title }}</h3>
+          <p class="property-location">{{ prop.location.name }}</p>
+          <div class="card-footer-metrics">
+            <span class="card-price">${{ prop.price }} / night</span>
+            <div class="amenities-chips">
+              <span class="amenity-chip">{{ prop.bedrooms }} Bed{{ prop.bedrooms|pluralize }}</span>
+              <span class="amenity-chip">{{ prop.bathrooms }} Bath{{ prop.bathrooms|pluralize }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+    {% empty %}
+    <div class="empty-state">
+      <h3 class="empty-title">No Matching Listings Found</h3>
+      <p class="empty-text">No properties match your filter criteria.</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if page_obj.paginator.num_pages > 1 %}
+  <div class="pagination-container">
+    {% if page_obj.has_previous %}
+    <a href="?location={{ location_name|urlencode }}&items_per_page={{ items_per_page }}&page={{ page_obj.previous_page_number }}" class="pagination-btn">Previous</a>
+    {% endif %}
+
+    <span class="pagination-status">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+    <a href="?location={{ location_name|urlencode }}&items_per_page={{ items_per_page }}&page={{ page_obj.next_page_number }}" class="pagination-btn">Next</a>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
