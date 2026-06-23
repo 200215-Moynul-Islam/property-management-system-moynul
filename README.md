@@ -6,7 +6,7 @@ A Django-based vacation rental property management system with geospatial search
 
 ## Tech Stack
 
-- **Backend:** Django 6, Python 3.12
+- **Backend:** Django 6, Python 3.12, Django REST Framework
 - **Database:** PostgreSQL 16 with PostGIS (geospatial) and PGVector (vector search)
 - **Infrastructure:** Docker, Docker Compose
 - **Data:** Pandas (CSV import), Pillow (image handling)
@@ -27,9 +27,16 @@ A Django-based vacation rental property management system with geospatial search
 │   │   └── commands/
 │   │       └── import_properties.py
 │   ├── migrations/
+│   ├── templates/          # Property-specific templates
 │   ├── admin.py
 │   ├── models.py
 │   └── views.py
+├── api/                    # REST API app
+│   ├── serializers.py
+│   ├── views.py
+│   └── urls.py
+├── templates/              # Global base templates and partials
+├── static/                 # CSS and JS assets
 ├── docker/
 │   ├── postgres/
 │   │   ├── Dockerfile
@@ -104,6 +111,8 @@ docker compose exec web python manage.py createsuperuser
 docker compose exec web python manage.py import_properties --file property/data/properties.csv
 ```
 
+> This also generates and stores `all-MiniLM-L6-v2` embeddings for each location.
+
 ---
 
 ## Features
@@ -111,8 +120,12 @@ docker compose exec web python manage.py import_properties --file property/data/
 - PostgreSQL 16 with PostGIS and PGVector via Docker
 - Django configured with GeoDjango (`django.contrib.gis`)
 - Models: `Location`, `Property`, `PropertyImage`
-- CSV import via Pandas management command (`import_properties`)
+- CSV import via Pandas management command with automatic embedding generation
 - Django Admin with image previews and filters
+- Homepage with semantic location autocomplete
+- Property listing page with pagination and configurable page size
+- Property detail page with image gallery and distance from city center
+- Location autocomplete REST API using cosine similarity search (HNSW index)
 
 ---
 
@@ -124,7 +137,7 @@ docker compose exec web python manage.py import_properties --file property/data/
 | ----------- | ----------- | --------------------------------- |
 | `name`      | CharField   | City/area name                    |
 | `point`     | PointField  | Lat/lng (PostGIS, geography=True) |
-| `embedding` | VectorField | 1536-dim (PGVector)               |
+| `embedding` | VectorField | 384-dim (PGVector, HNSW index)    |
 
 ### `Property`
 
@@ -160,6 +173,7 @@ Access at `http://localhost:8000/admin/`
 
 ## API
 
-| Endpoint       | Description  |
-| -------------- | ------------ |
-| `GET /health/` | Health check |
+| Endpoint                                    | Description                    |
+| ------------------------------------------- | ------------------------------ |
+| `GET /health/`                              | Health check                   |
+| `GET /api/location-autocomplete/?q=<query>` | Semantic location autocomplete |
