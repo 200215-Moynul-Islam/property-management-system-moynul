@@ -1,0 +1,171 @@
+.compact-detail-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 868px) {
+  .compact-detail-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .gallery-column {
+    flex: 1.2;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .info-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+.main-display-box {
+  width: 100%;
+  height: 400px;
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.75rem;
+}
+
+.main-display-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnails-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.thumb-track {
+  width: 80px;
+  height: 56px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.thumb-track:hover {
+  opacity: 0.8;
+}
+
+.thumb-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-track.active-thumb {
+  border-color: #8a2be2;
+}
+
+.info-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+.detail-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.detail-location {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.detail-amenities-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.detail-chip {
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.pricing-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+}
+
+.rate-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #8a2be2;
+}
+
+.rate-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.distance-badge {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  background-color: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.distance-label {
+  font-weight: 600;
+  color: #6d28d9;
+}
+
+.distance-value {
+  color: #4c1d95;
+}
+
+.description-section h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.description-section p {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

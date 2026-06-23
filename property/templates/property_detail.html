@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/property_detail.css' %}">
+
+<div class="container compact-detail-layout">
+  <div class="gallery-column">
+    <div class="main-display-box">
+      <img id="mainViewer" src="{% if property.images.all %}{{ property.images.first.image.url }}{% else %}/static/images/fallback.jpg{% endif %}" alt="{{ property.title }}" />
+    </div>
+
+    {% if property.images.all %}
+    <div class="thumbnails-strip">
+      {% for img in property.images.all %}
+      <div class="thumb-track {% if forloop.first %}active-thumb{% endif %}">
+        <img src="{{ img.image.url }}" alt="Thumbnail Layout" class="thumbnail-target" />
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="info-column">
+    <div class="info-header">
+      <h1 class="detail-title">{{ property.title }}</h1>
+      <p class="detail-location">{{ property.location.name }}</p>
+    </div>
+
+    <div class="meta-row">
+      <div class="detail-amenities-row">
+        <span class="detail-chip">{{ property.bedrooms }} Bed{{ property.bedrooms|pluralize }}</span>
+        <span class="detail-chip">{{ property.bathrooms }} Bath{{ property.bathrooms|pluralize }}</span>
+      </div>
+      
+      <div class="pricing-container">
+        <span class="rate-value">${{ property.price }}</span>
+        <span class="rate-label">/ night</span>
+      </div>
+    </div>
+
+    {% if distance_km is not None %}
+    <div class="distance-badge">
+      <span class="distance-label">City Center:</span>
+      <span class="distance-value">{{ distance_km }} km away</span>
+    </div>
+    {% endif %}
+
+    <div class="description-section">
+      <h3>Description</h3>
+      <p>{{ property.description }}</p>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock %}
