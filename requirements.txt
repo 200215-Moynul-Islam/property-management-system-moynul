@@ -1,5 +1,6 @@
 asgiref==3.11.1
 Django==6.0.6
+djangorestframework==3.17.1
 numpy==2.5.0
 pandas==3.0.3
 pgvector==0.4.2
