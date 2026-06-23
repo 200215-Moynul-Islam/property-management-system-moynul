@@ -10,6 +10,8 @@ __pycache__/
 # Django Media Files
 media/
 
+staticfiles/
+
 # Logs
 *.log
 
